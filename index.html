@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelas 5 Ibnu Khaldun 2 | SD Islam Nurul Hasanah</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --hijau: #1a4731;
+    --hijau-mid: #2d6a4f;
+    --hijau-light: #52b788;
+    --gold: #c9a84c;
+    --gold-light: #f0c040;
+    --gold-pale: #fef3c7;
+    --cream: #faf8f2;
+    --dark: #0f1f18;
+    --text: #1c1c1c;
+    --muted: #6b7c72;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,248,242,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--hijau);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-school-btn {
+    background: var(--hijau);
+    color: var(--gold-light) !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: background 0.3s !important;
+  }
+
+  .nav-school-btn:hover { background: var(--hijau-mid) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 48px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--hijau) 45%, #1a3a28 100%);
+    z-index: 0;
+  }
+
+  .hero-ornament {
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+
+  .hero-ornament::after {
+    content: '';
+    position: absolute;
+    inset: 80px;
+    border: 1px solid rgba(201,168,76,0.08);
+    border-radius: 50%;
+  }
+
+  /* Islamic geometric pattern */
+  .hero-pattern {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: 420px;
+    opacity: 0.06;
+    z-index: 1;
+    background-image: 
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title .gold { color: var(--gold-light); }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .hero-arabic {
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+    font-family: serif;
+    letter-spacing: 2px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--hijau);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .stat-item:nth-child(1) { animation-delay: 0.1s; }
+  .stat-item:nth-child(2) { animation-delay: 0.2s; }
+  .stat-item:nth-child(3) { animation-delay: 0.3s; }
+  .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* SECTION COMMONS */
+  section {
+    padding: 100px 48px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    color: var(--hijau);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    margin-bottom: 48px;
+    border-radius: 2px;
+  }
+
+  /* ANGGOTA SECTION */
+  .anggota-section {
+    background: white;
+  }
+
+  .anggota-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .anggota-header .section-divider {
+    margin: 0 auto 48px;
+  }
+
+  .anggota-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .anggota-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 28px 20px 24px;
+    text-align: center;
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .anggota-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--hijau), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .anggota-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(26,71,49,0.12);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .anggota-card:hover::before { opacity: 1; }
+
+  .anggota-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--hijau-mid), var(--hijau-light));
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    border: 3px solid rgba(201,168,76,0.3);
+  }
+
+  .anggota-nama {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--hijau);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .anggota-role {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .anggota-role.ketua {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Add member card */
+  .add-card {
+    border: 2px dashed rgba(201,168,76,0.3);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    transition: all 0.3s;
+  }
+
+  .add-card:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.04);
+    transform: translateY(-4px);
+  }
+
+  .add-card .plus {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  /* GALERI */
+  .galeri-section { background: var(--cream); }
+
+  .galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .galeri-item {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--hijau-mid);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .galeri-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .galeri-item:hover { transform: scale(0.98); }
+
+  .galeri-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    background: linear-gradient(135deg, var(--hijau) 0%, var(--hijau-mid) 100%);
+    transition: all 0.3s;
+  }
+
+  .galeri-item:hover .galeri-placeholder {
+    background: linear-gradient(135deg, var(--hijau-mid) 0%, var(--hijau-light) 100%);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .galeri-icon {
+    font-size: 36px;
+    opacity: 0.5;
+  }
+
+  .galeri-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+
+  .galeri-item:hover .galeri-overlay { opacity: 1; }
+
+  .galeri-caption {
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* PENGUMUMAN */
+  .pengumuman-section {
+    background: white;
+  }
+
+  .pengumuman-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .pengumuman-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pengumuman-item {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .pengumuman-item:hover .peng-title { color: var(--gold); }
+
+  .peng-date {
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .peng-day {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--hijau);
+    line-height: 1;
+  }
+
+  .peng-month {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .peng-content {}
+
+  .peng-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 2px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .tag-penting { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .tag-info { background: rgba(26,71,49,0.1); color: var(--hijau-mid); }
+  .tag-kegiatan { background: rgba(82,183,136,0.15); color: var(--hijau-light); }
+
+  .peng-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.3;
+    transition: color 0.2s;
+  }
+
+  .peng-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* JADWAL */
+  .jadwal-card {
+    background: var(--hijau);
+    border-radius: 12px;
+    padding: 32px;
+    color: white;
+    position: sticky;
+    top: 100px;
+  }
+
+  .jadwal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .jadwal-days {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .day-btn {
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .day-btn.active {
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+  }
+
+  .day-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.2);
+    color: white;
+  }
+
+  .jadwal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .jadwal-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .jadwal-row:last-child { border-bottom: none; }
+
+  .jadwal-num {
+    width: 28px;
+    height: 28px;
+    background: rgba(201,168,76,0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .jadwal-mapel {
+    flex: 1;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .jadwal-jam {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 48px 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+  }
+
+  .footer-arabic {
+    font-size: 20px;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 32px;
+    font-family: serif;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+  }
+
+  .footer-school-link {
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .footer-school-link:hover { opacity: 0.7; }
+
+  /* SCHOOL BUTTON FLOATING */
+  .school-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 50;
+    background: var(--hijau);
+    color: var(--gold-light);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .school-float:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    background: var(--hijau-mid);
+    color: white;
+  }
+
+  .school-float-icon {
+    width: 20px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--dark);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 60px 24px; }
+    .stats-bar { padding: 24px; gap: 32px; }
+    .galeri-grid { grid-template-columns: 1fr 1fr; }
+    .galeri-item:nth-child(1) { grid-column: span 2; }
+    .pengumuman-layout { grid-template-columns: 1fr; }
+    .school-float { bottom: 20px; right: 20px; }
+    footer { padding: 40px 24px 32px; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">IBNU <span>KHALDUN</span> · IK2</div>
+  <ul class="nav-links">
+    <li><a href="#anggota">Anggota</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#pengumuman">Pengumuman</a></li>
+    <li><a href="#jadwal">Jadwal</a></li>
+    <li><a href="https://nurulhasana.netlify.app" target="_blank" class="nav-school-btn">🏫 Sekolah</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-pattern"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">SD Islam Nurul Hasanah · Kelas 5 Ibnu Khaldun 2</p>
+    <h1 class="hero-title">IBNU<br><span class="gold">KHALDUN</span></h1>
+    <p class="hero-subtitle">اِبْنُ خَلْدُوْن — Sang Penjelajah Ilmu</p>
+    <p class="hero-desc">
+      Terinspirasi dari Ibnu Khaldun, bapak sosiologi dunia yang tak pernah berhenti belajar. Kelas 5 Ibnu Khaldun 2 tumbuh bersama, berprestasi bersama, dengan semangat iman dan ilmu.
+    </p>
+    <div class="hero-arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="hero-cta">
+      <a href="#anggota" class="btn-primary">Kenalan Yuk 👋</a>
+      <a href="#pengumuman" class="btn-outline">Info Terbaru</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">5 IK2</span>
+    <span class="stat-label">Kelas</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" id="countSiswa">21</span>
+    <span class="stat-label">Siswa</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">2025</span>
+    <span class="stat-label">Tahun Ajaran</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">∞</span>
+    <span class="stat-label">Semangat</span>
+  </div>
+</div>
+
+<!-- ANGGOTA -->
+<section class="anggota-section" id="anggota">
+  <div class="anggota-header reveal">
+    <span class="section-eyebrow">Keluarga Besar</span>
+    <h2 class="section-title">Anggota Kelas 5 Ibnu Khaldun 2</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="anggota-grid" id="anggotaGrid">
+    <!-- Diisi JS -->
+  </div>
+</section>
+
+<!-- GALERI -->
+<section class="galeri-section" id="galeri">
+  <div class="reveal">
+    <span class="section-eyebrow">Momen Bersama</span>
+    <h2 class="section-title">Galeri Kelas</h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="galeri-grid reveal">
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">📸</div>
+        <span>Tambahkan Foto Kelas</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Foto Bersama Kelas 5 Ibnu Khaldun 2</span></div>
+    </div>
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">🎨</div>
+        <span>Kegiatan Seni</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Pelajaran Seni Budaya</span></div>
+    </div>
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">⚽</div>
+        <span>Olahraga & Ekskul</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Kegiatan Olahraga</span></div>
+    </div>
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">📖</div>
+        <span>Belajar Bareng</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Study Session</span></div>
+    </div>
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">🌙</div>
+        <span>Kegiatan Islami</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Kegiatan Keagamaan</span></div>
+    </div>
+    <div class="galeri-item">
+      <div class="galeri-placeholder">
+        <div class="galeri-icon">🏆</div>
+        <span>Prestasi & Lomba</span>
+      </div>
+      <div class="galeri-overlay"><span class="galeri-caption">Penghargaan & Prestasi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PENGUMUMAN + JADWAL -->
+<section class="pengumuman-section" id="pengumuman">
+  <div class="pengumuman-layout">
+    <div>
+      <div class="reveal">
+        <span class="section-eyebrow">Info Kelas</span>
+        <h2 class="section-title">Pengumuman</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="pengumuman-list reveal" id="pengumumanList">
+        <div class="pengumuman-item">
+          <div class="peng-date">
+            <span class="peng-day">13</span>
+            <span class="peng-month">Mar</span>
+          </div>
+          <div class="peng-content">
+            <span class="peng-tag tag-penting">Penting</span>
+            <p class="peng-title">Website Kelas 5 Ibnu Khaldun 2 Resmi Diluncurkan! 🎉</p>
+            <p class="peng-desc">Kelas Ibnu Khaldun 2 sekarang punya website resmi. Bookmark dan share ke orang tua!</p>
+          </div>
+        </div>
+        <div class="pengumuman-item">
+          <div class="peng-date">
+            <span class="peng-day">10</span>
+            <span class="peng-month">Mar</span>
+          </div>
+          <div class="peng-content">
+            <span class="peng-tag tag-kegiatan">Kegiatan</span>
+            <p class="peng-title">Persiapan UTS Semester Genap</p>
+            <p class="peng-desc">UTS akan dilaksanakan minggu depan. Belajar lebih semangat ya teman-teman!</p>
+          </div>
+        </div>
+        <div class="pengumuman-item">
+          <div class="peng-date">
+            <span class="peng-day">05</span>
+            <span class="peng-month">Mar</span>
+          </div>
+          <div class="peng-content">
+            <span class="peng-tag tag-info">Info</span>
+            <p class="peng-title">Jadwal Sholat Dhuha Bergilir</p>
+            <p class="peng-desc">Jadwal imam sholat dhuha bergilir sudah dibagikan. Cek grup WhatsApp kelas.</p>
+          </div>
+        </div>
+        <div class="pengumuman-item">
+          <div class="peng-date">
+            <span class="peng-day">01</span>
+            <span class="peng-month">Mar</span>
+          </div>
+          <div class="peng-content">
+            <span class="peng-tag tag-penting">Penting</span>
+            <p class="peng-title">Pengumpulan Tugas Prakarya</p>
+            <p class="peng-desc">Deadline pengumpulan tugas prakarya minggu ini. Jangan sampai telat!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JADWAL -->
+    <div id="jadwal">
+      <div class="jadwal-card reveal">
+        <div class="jadwal-title">📅 Jadwal Pelajaran</div>
+
+        <div class="jadwal-days" id="jadwalDays"></div>
+
+        <div class="jadwal-list" id="jadwalList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">IBNU KHALDUN 2</div>
+  <div class="footer-sub">Kelas 5 · SD Islam Nurul Hasanah</div>
+  <div class="footer-arabic">رَبِّ زِدْنِي عِلْمًا</div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    Bagian dari keluarga besar · 
+    <a href="https://nurulhasana.netlify.app" target="_blank" class="footer-school-link">nurulhasana.netlify.app</a>
+  </div>
+</footer>
+
+<!-- FLOATING SCHOOL BUTTON -->
+<a href="https://nurulhasana.netlify.app" target="_blank" class="school-float">
+  <div class="school-float-icon">🏫</div>
+  Web Sekolah
+</a>
+
+<script>
+// DATA ANGGOTA — ganti sesuai kelas beneran
+const anggota = [
+  { nama: "Muhammad Naufal Zafran", role: "Ketua Kelas", isKetua: true },
+  { nama: "Rhady Muhammad Khidir", role: "Wakil Ketua", isKetua: false },
+  { nama: "Hafidz Rizki Irana", role: "Sekretaris", isKetua: false },
+  { nama: "Abdillah Al Jaffan", role: "Keamanan", isKetua: false },
+  { nama: "Hamam Ali Razzak", role: "Kebersihan", isKetua: false },
+  { nama: "Siswa 6", role: "Anggota", isKetua: false },
+  { nama: "Siswa 7", role: "Anggota", isKetua: false },
+  { nama: "Siswa 8", role: "Anggota", isKetua: false },
+  { nama: "Siswa 9", role: "Anggota", isKetua: false },
+  { nama: "Siswa 10", role: "Anggota", isKetua: false },
+  { nama: "Siswa 11", role: "Anggota", isKetua: false },
+  { nama: "Siswa 12", role: "Anggota", isKetua: false },
+  { nama: "Siswa 13", role: "Anggota", isKetua: false },
+  { nama: "Siswa 14", role: "Anggota", isKetua: false },
+  { nama: "Siswa 15", role: "Anggota", isKetua: false },
+  { nama: "Siswa 16", role: "Anggota", isKetua: false },
+  { nama: "Siswa 17", role: "Anggota", isKetua: false },
+  { nama: "Siswa 18", role: "Anggota", isKetua: false },
+  { nama: "Siswa 19", role: "Anggota", isKetua: false },
+  { nama: "Siswa 20", role: "Anggota", isKetua: false },
+  { nama: "Siswa 21", role: "Anggota", isKetua: false },
+];
+
+function getInitials(nama) {
+  return nama.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+}
+
+const grid = document.getElementById('anggotaGrid');
+anggota.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'anggota-card';
+  card.style.animationDelay = (i * 0.05) + 's';
+  card.innerHTML = `
+    <div class="anggota-avatar">${getInitials(s.nama)}</div>
+    <div class="anggota-nama">${s.nama}</div>
+    <div class="anggota-role ${s.isKetua ? 'ketua' : ''}">${s.role}</div>
+  `;
+  grid.appendChild(card);
+});
+
+// Add card
+const addCard = document.createElement('div');
+addCard.className = 'anggota-card add-card';
+addCard.innerHTML = `<span class="plus">+</span><span>Tambah Anggota</span>`;
+grid.appendChild(addCard);
+
+// JADWAL DATA
+const jadwal = {
+  'Senin': [
+    { mapel: 'Upacara', jam: '07.00' },
+    { mapel: 'Matematika', jam: '08.00' },
+    { mapel: 'Bahasa Indonesia', jam: '09.00' },
+    { mapel: 'Istirahat', jam: '10.00' },
+    { mapel: 'IPA', jam: '10.20' },
+    { mapel: 'Agama Islam', jam: '11.20' },
+  ],
+  'Selasa': [
+    { mapel: 'Bahasa Arab', jam: '07.00' },
+    { mapel: 'IPS', jam: '08.00' },
+    { mapel: 'PKn', jam: '09.00' },
+    { mapel: 'Istirahat', jam: '10.00' },
+    { mapel: 'Matematika', jam: '10.20' },
+    { mapel: 'SBdP', jam: '11.20' },
+  ],
+  'Rabu': [
+    { mapel: 'Tahfidz Quran', jam: '07.00' },
+    { mapel: 'Bahasa Inggris', jam: '08.00' },
+    { mapel: 'IPA', jam: '09.00' },
+    { mapel: 'Istirahat', jam: '10.00' },
+    { mapel: 'Bahasa Indonesia', jam: '10.20' },
+    { mapel: 'PJOK', jam: '11.20' },
+  ],
+  'Kamis': [
+    { mapel: 'Agama Islam', jam: '07.00' },
+    { mapel: 'Matematika', jam: '08.00' },
+    { mapel: 'Bahasa Inggris', jam: '09.00' },
+    { mapel: 'Istirahat', jam: '10.00' },
+    { mapel: 'IPS', jam: '10.20' },
+    { mapel: 'Prakarya', jam: '11.20' },
+  ],
+  "Jum'at": [
+    { mapel: 'Tahsin', jam: '07.00' },
+    { mapel: 'Bahasa Indonesia', jam: '08.00' },
+    { mapel: 'Matematika', jam: '09.00' },
+    { mapel: 'Sholat Jumat / Keputrian', jam: '11.30' },
+  ],
+};
+
+const days = Object.keys(jadwal);
+const daysContainer = document.getElementById('jadwalDays');
+const listContainer = document.getElementById('jadwalList');
+
+let activeDay = 'Senin';
+
+// Set active day based on current day
+const todayIdx = new Date().getDay(); // 0=Sun,1=Mon...5=Fri
+const dayMap = {1:'Senin',2:'Selasa',3:'Rabu',4:'Kamis',5:"Jum'at"};
+if (dayMap[todayIdx]) activeDay = dayMap[todayIdx];
+
+function renderJadwal(day) {
+  listContainer.innerHTML = '';
+  jadwal[day].forEach((item, i) => {
+    const row = document.createElement('div');
+    row.className = 'jadwal-row';
+    row.innerHTML = `
+      <div class="jadwal-num">${i+1}</div>
+      <div class="jadwal-mapel">${item.mapel}</div>
+      <div class="jadwal-jam">${item.jam}</div>
+    `;
+    listContainer.appendChild(row);
+  });
+}
+
+days.forEach(day => {
+  const btn = document.createElement('button');
+  btn.className = 'day-btn' + (day === activeDay ? ' active' : '');
+  btn.textContent = day;
+  btn.onclick = () => {
+    activeDay = day;
+    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderJadwal(day);
+  };
+  daysContainer.appendChild(btn);
+});
+
+renderJadwal(activeDay);
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
