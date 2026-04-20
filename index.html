@@ -2,1183 +2,1149 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kelas 5 Ibnu Khaldun 2 | SD Islam Nurul Hasanah</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Tiny World 🌍</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --hijau: #1a4731;
-    --hijau-mid: #2d6a4f;
-    --hijau-light: #52b788;
-    --gold: #c9a84c;
-    --gold-light: #f0c040;
-    --gold-pale: #fef3c7;
-    --cream: #faf8f2;
-    --dark: #0f1f18;
-    --text: #1c1c1c;
-    --muted: #6b7c72;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* NOISE TEXTURE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 18px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(250,248,242,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
-  }
-
-  .nav-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 14px;
-    color: var(--hijau);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-  }
-
-  .nav-logo span {
-    color: var(--gold);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--gold); }
-
-  .nav-school-btn {
-    background: var(--hijau);
-    color: var(--gold-light) !important;
-    padding: 8px 18px;
-    border-radius: 4px;
-    transition: background 0.3s !important;
-  }
-
-  .nav-school-btn:hover { background: var(--hijau-mid) !important; color: white !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 120px 48px 80px;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--dark) 0%, var(--hijau) 45%, #1a3a28 100%);
-    z-index: 0;
-  }
-
-  .hero-ornament {
-    position: absolute;
-    right: -80px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 50%;
-    z-index: 1;
-  }
-
-  .hero-ornament::before {
-    content: '';
-    position: absolute;
-    inset: 40px;
-    border: 1px solid rgba(201,168,76,0.1);
-    border-radius: 50%;
-  }
-
-  .hero-ornament::after {
-    content: '';
-    position: absolute;
-    inset: 80px;
-    border: 1px solid rgba(201,168,76,0.08);
-    border-radius: 50%;
-  }
-
-  /* Islamic geometric pattern */
-  .hero-pattern {
-    position: absolute;
-    right: 80px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 420px;
-    height: 420px;
-    opacity: 0.06;
-    z-index: 1;
-    background-image: 
-      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
-      repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
-    background-size: 30px 30px;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 680px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.2s;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 7vw, 88px);
-    font-weight: 800;
-    color: white;
-    line-height: 1;
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-title .gold { color: var(--gold-light); }
-
-  .hero-subtitle {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 2.5vw, 26px);
-    color: rgba(255,255,255,0.6);
-    font-weight: 600;
-    font-style: italic;
-    margin-bottom: 32px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.6s;
-  }
-
-  .hero-desc {
-    font-size: 15px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.8;
-    max-width: 480px;
-    margin-bottom: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.8s;
-  }
-
-  .hero-arabic {
-    font-size: 22px;
-    color: var(--gold);
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.9s;
-    font-family: serif;
-    letter-spacing: 2px;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 1s;
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: var(--dark);
-    padding: 14px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    border: none;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--hijau);
-    padding: 32px 48px;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
-  }
-
-  .stat-item {
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .stat-item:nth-child(1) { animation-delay: 0.1s; }
-  .stat-item:nth-child(2) { animation-delay: 0.2s; }
-  .stat-item:nth-child(3) { animation-delay: 0.3s; }
-  .stat-item:nth-child(4) { animation-delay: 0.4s; }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--gold-light);
-    display: block;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  /* SECTION COMMONS */
-  section {
-    padding: 100px 48px;
-  }
-
-  .section-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 12px;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
-    color: var(--hijau);
-    margin-bottom: 16px;
-    line-height: 1.1;
-  }
-
-  .section-divider {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    margin-bottom: 48px;
-    border-radius: 2px;
-  }
-
-  /* ANGGOTA SECTION */
-  .anggota-section {
-    background: white;
-  }
-
-  .anggota-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .anggota-header .section-divider {
-    margin: 0 auto 48px;
-  }
-
-  .anggota-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .anggota-card {
-    background: var(--cream);
-    border-radius: 8px;
-    padding: 28px 20px 24px;
-    text-align: center;
-    border: 1px solid rgba(201,168,76,0.15);
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .anggota-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--hijau), var(--gold));
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .anggota-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(26,71,49,0.12);
-    border-color: rgba(201,168,76,0.4);
-  }
-
-  .anggota-card:hover::before { opacity: 1; }
-
-  .anggota-avatar {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--hijau-mid), var(--hijau-light));
-    margin: 0 auto 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 800;
-    color: white;
-    border: 3px solid rgba(201,168,76,0.3);
-  }
-
-  .anggota-nama {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--hijau);
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-
-  .anggota-role {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .anggota-role.ketua {
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  /* Add member card */
-  .add-card {
-    border: 2px dashed rgba(201,168,76,0.3);
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 160px;
-    gap: 12px;
-    color: var(--muted);
-    font-size: 13px;
-    transition: all 0.3s;
-  }
-
-  .add-card:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,168,76,0.04);
-    transform: translateY(-4px);
-  }
-
-  .add-card .plus {
-    font-size: 28px;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--gold);
-  }
-
-  /* GALERI */
-  .galeri-section { background: var(--cream); }
-
-  .galeri-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .galeri-item {
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    aspect-ratio: 4/3;
-    background: var(--hijau-mid);
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  .galeri-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
-
-  .galeri-item:hover { transform: scale(0.98); }
-
-  .galeri-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    color: rgba(255,255,255,0.4);
-    font-size: 13px;
-    background: linear-gradient(135deg, var(--hijau) 0%, var(--hijau-mid) 100%);
-    transition: all 0.3s;
-  }
-
-  .galeri-item:hover .galeri-placeholder {
-    background: linear-gradient(135deg, var(--hijau-mid) 0%, var(--hijau-light) 100%);
-    color: rgba(255,255,255,0.7);
-  }
-
-  .galeri-icon {
-    font-size: 36px;
-    opacity: 0.5;
-  }
-
-  .galeri-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-  }
-
-  .galeri-item:hover .galeri-overlay { opacity: 1; }
-
-  .galeri-caption {
-    color: white;
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  /* PENGUMUMAN */
-  .pengumuman-section {
-    background: white;
-  }
-
-  .pengumuman-layout {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-
-  .pengumuman-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .pengumuman-item {
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-
-  .pengumuman-item:hover .peng-title { color: var(--gold); }
-
-  .peng-date {
-    min-width: 48px;
-    text-align: center;
-  }
-
-  .peng-day {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--hijau);
-    line-height: 1;
-  }
-
-  .peng-month {
-    display: block;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  .peng-content {}
-
-  .peng-tag {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 2px;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .tag-penting { background: rgba(201,168,76,0.15); color: var(--gold); }
-  .tag-info { background: rgba(26,71,49,0.1); color: var(--hijau-mid); }
-  .tag-kegiatan { background: rgba(82,183,136,0.15); color: var(--hijau-light); }
-
-  .peng-title {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text);
-    margin-bottom: 6px;
-    line-height: 1.3;
-    transition: color 0.2s;
-  }
-
-  .peng-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* JADWAL */
-  .jadwal-card {
-    background: var(--hijau);
-    border-radius: 12px;
-    padding: 32px;
-    color: white;
-    position: sticky;
-    top: 100px;
-  }
-
-  .jadwal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--gold-light);
-    margin-bottom: 24px;
-    font-weight: 700;
-  }
-
-  .jadwal-days {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-
-  .day-btn {
-    padding: 6px 14px;
-    border-radius: 4px;
-    font-size: 12px;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s;
-    background: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.5px;
-  }
-
-  .day-btn.active {
-    background: var(--gold);
-    color: var(--dark);
-    font-weight: 700;
-  }
-
-  .day-btn:hover:not(.active) {
-    background: rgba(255,255,255,0.2);
-    color: white;
-  }
-
-  .jadwal-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .jadwal-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .jadwal-row:last-child { border-bottom: none; }
-
-  .jadwal-num {
-    width: 28px;
-    height: 28px;
-    background: rgba(201,168,76,0.2);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: var(--gold);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .jadwal-mapel {
-    flex: 1;
-    font-size: 14px;
-    color: rgba(255,255,255,0.85);
-    font-weight: 500;
-  }
-
-  .jadwal-jam {
-    font-size: 12px;
-    color: rgba(255,255,255,0.4);
-    font-weight: 400;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    padding: 60px 48px 40px;
-    text-align: center;
-  }
-
-  .footer-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 20px;
-    color: var(--gold);
-    letter-spacing: 4px;
-    margin-bottom: 8px;
-  }
-
-  .footer-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 32px;
-    letter-spacing: 1px;
-  }
-
-  .footer-arabic {
-    font-size: 20px;
-    color: rgba(201,168,76,0.5);
-    margin-bottom: 32px;
-    font-family: serif;
-  }
-
-  .footer-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.08);
-    margin-bottom: 24px;
-  }
-
-  .footer-bottom {
-    font-size: 12px;
-    color: rgba(255,255,255,0.2);
-    letter-spacing: 1px;
-  }
-
-  .footer-school-link {
-    color: var(--gold);
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .footer-school-link:hover { opacity: 0.7; }
-
-  /* SCHOOL BUTTON FLOATING */
-  .school-float {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    z-index: 50;
-    background: var(--hijau);
-    color: var(--gold-light);
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s;
-    border: 1px solid rgba(201,168,76,0.3);
-  }
-
-  .school-float:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-    background: var(--hijau-mid);
-    color: white;
-  }
-
-  .school-float-icon {
-    width: 20px;
-    height: 20px;
-    background: var(--gold);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    color: var(--dark);
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero { padding: 100px 24px 60px; }
-    section { padding: 60px 24px; }
-    .stats-bar { padding: 24px; gap: 32px; }
-    .galeri-grid { grid-template-columns: 1fr 1fr; }
-    .galeri-item:nth-child(1) { grid-column: span 2; }
-    .pengumuman-layout { grid-template-columns: 1fr; }
-    .school-float { bottom: 20px; right: 20px; }
-    footer { padding: 40px 24px 32px; }
-  }
-
-  /* SCROLL REVEAL */
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #1a0a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+  user-select: none;
+}
+
+#game-wrap {
+  position: relative;
+  display: inline-block;
+  border: 3px solid #7c4dff;
+  box-shadow: 0 0 40px rgba(124,77,255,0.5), 0 0 80px rgba(124,77,255,0.2);
+  image-rendering: pixelated;
+}
+
+#gameCanvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  top: 8px; left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.hud-badge {
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(4px);
+}
+
+#msg-box {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-top: 2px solid #7c4dff;
+  padding: 6px 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #e0d7ff;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  max-width: 90%;
+  text-align: center;
+}
+#msg-box.show { opacity: 1; }
+
+/* Controls */
+#controls {
+  position: absolute;
+  bottom: 8px; right: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  pointer-events: auto;
+}
+
+.ctrl-row { display: flex; gap: 3px; }
+
+.ctrl-btn {
+  width: 36px; height: 36px;
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(124,77,255,0.6);
+  border-radius: 6px;
+  color: #c4b5fd;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  active-transform: scale(0.9);
+  transition: background 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.ctrl-btn:active { background: rgba(124,77,255,0.3); }
+
+.ctrl-btn.action-btn {
+  width: 38px; height: 38px;
+  border-color: rgba(255,165,0,0.7);
+  color: #fbbf24;
+  font-size: 12px;
+}
+
+#toolbar {
+  position: absolute;
+  top: 8px; right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tool-btn {
+  width: 34px; height: 34px;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.tool-btn.active { border-color: #7c4dff; background: rgba(124,77,255,0.35); }
+.tool-btn:hover { border-color: rgba(255,255,255,0.4); }
+
+/* Day/Night overlay */
+#daynight {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: rgba(0,0,50,0);
+  transition: background 2s;
+}
+
+/* Title screen */
+#title-screen {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, #0d001a 0%, #1a0035 60%, #2d0045 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  gap: 12px;
+}
+
+.title-pixel {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(16px,3vw,22px);
+  color: #c4b5fd;
+  text-shadow: 3px 3px 0 #7c4dff, 6px 6px 0 #4c1d95;
+  letter-spacing: 2px;
+  animation: titleFloat 2s ease-in-out infinite;
+}
+@keyframes titleFloat {
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+}
+
+.title-sub {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #a78bfa;
+  letter-spacing: 1px;
+  text-align:center;
+}
+
+.title-stars { font-size: 20px; letter-spacing: 6px; animation: twinkle 1.5s ease-in-out infinite; }
+@keyframes twinkle { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+.start-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  background: #7c4dff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 0 #4c1d95;
+  transition: all 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.start-btn:active { transform:translateY(3px); box-shadow:0 1px 0 #4c1d95; }
+
+.help-text {
+  font-family:'Press Start 2P',monospace;
+  font-size:6px;
+  color:#6d5aad;
+  text-align:center;
+  line-height:1.8;
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">IBNU <span>KHALDUN</span> · IK2</div>
-  <ul class="nav-links">
-    <li><a href="#anggota">Anggota</a></li>
-    <li><a href="#galeri">Galeri</a></li>
-    <li><a href="#pengumuman">Pengumuman</a></li>
-    <li><a href="#jadwal">Jadwal</a></li>
-    <li><a href="https://nurulhasana.netlify.app" target="_blank" class="nav-school-btn">🏫 Sekolah</a></li>
-  </ul>
-</nav>
+<div id="game-wrap">
+  <canvas id="gameCanvas"></canvas>
+  <div id="daynight"></div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-ornament"></div>
-  <div class="hero-pattern"></div>
+  <div id="hud">
+    <div class="hud-badge">🌍 <span id="hud-world">Tiny World</span></div>
+    <div class="hud-badge">⏰ <span id="hud-time">Pagi</span></div>
+    <div class="hud-badge">🏗️ <span id="hud-tool">Jalan</span></div>
+  </div>
 
-  <div class="hero-content">
-    <p class="hero-eyebrow">SD Islam Nurul Hasanah · Kelas 5 Ibnu Khaldun 2</p>
-    <h1 class="hero-title">IBNU<br><span class="gold">KHALDUN</span></h1>
-    <p class="hero-subtitle">اِبْنُ خَلْدُوْن — Sang Penjelajah Ilmu</p>
-    <p class="hero-desc">
-      Terinspirasi dari Ibnu Khaldun, bapak sosiologi dunia yang tak pernah berhenti belajar. Kelas 5 Ibnu Khaldun 2 tumbuh bersama, berprestasi bersama, dengan semangat iman dan ilmu.
-    </p>
-    <div class="hero-arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-    <div class="hero-cta">
-      <a href="#anggota" class="btn-primary">Kenalan Yuk 👋</a>
-      <a href="#pengumuman" class="btn-outline">Info Terbaru</a>
+  <div id="msg-box"></div>
+
+  <!-- Toolbar -->
+  <div id="toolbar">
+    <div class="tool-btn active" id="tb-walk" onclick="setTool('walk')" title="Jalan">🚶</div>
+    <div class="tool-btn" id="tb-tree" onclick="setTool('tree')" title="Tanam Pohon">🌲</div>
+    <div class="tool-btn" id="tb-house" onclick="setTool('house')" title="Bangun Rumah">🏠</div>
+    <div class="tool-btn" id="tb-flower" onclick="setTool('flower')" title="Tanam Bunga">🌸</div>
+    <div class="tool-btn" id="tb-water" onclick="setTool('water')" title="Buat Kolam">💧</div>
+    <div class="tool-btn" id="tb-rock" onclick="setTool('rock')" title="Taruh Batu">🪨</div>
+    <div class="tool-btn" id="tb-erase" onclick="setTool('erase')" title="Hapus">🗑️</div>
+  </div>
+
+  <!-- Mobile D-pad -->
+  <div id="controls">
+    <div class="ctrl-row"><div class="ctrl-btn" id="btn-up">▲</div></div>
+    <div class="ctrl-row">
+      <div class="ctrl-btn" id="btn-left">◀</div>
+      <div class="ctrl-btn action-btn" id="btn-act">✨</div>
+      <div class="ctrl-btn" id="btn-right">▶</div>
     </div>
+    <div class="ctrl-row"><div class="ctrl-btn" id="btn-down">▼</div></div>
   </div>
-</section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num">5 IK2</span>
-    <span class="stat-label">Kelas</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num" id="countSiswa">21</span>
-    <span class="stat-label">Siswa</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">2025</span>
-    <span class="stat-label">Tahun Ajaran</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">∞</span>
-    <span class="stat-label">Semangat</span>
+  <!-- Title Screen -->
+  <div id="title-screen">
+    <div class="title-stars">⭐ ✨ ⭐</div>
+    <div class="title-pixel">TINY WORLD</div>
+    <div class="title-sub">open world kecil yang lucu</div>
+    <canvas id="previewCanvas" width="64" height="64" style="image-rendering:pixelated;width:96px;height:96px;margin:4px 0;"></canvas>
+    <button class="start-btn" onclick="startGame()">▶ MULAI</button>
+    <div class="help-text">
+      WASD / Arrow = gerak<br>
+      Klik tile = bangun<br>
+      Toolbar = pilih objek
+    </div>
   </div>
 </div>
 
-<!-- ANGGOTA -->
-<section class="anggota-section" id="anggota">
-  <div class="anggota-header reveal">
-    <span class="section-eyebrow">Keluarga Besar</span>
-    <h2 class="section-title">Anggota Kelas 5 Ibnu Khaldun 2</h2>
-    <div class="section-divider"></div>
-  </div>
-
-  <div class="anggota-grid" id="anggotaGrid">
-    <!-- Diisi JS -->
-  </div>
-</section>
-
-<!-- GALERI -->
-<section class="galeri-section" id="galeri">
-  <div class="reveal">
-    <span class="section-eyebrow">Momen Bersama</span>
-    <h2 class="section-title">Galeri Kelas</h2>
-    <div class="section-divider"></div>
-  </div>
-
-  <div class="galeri-grid reveal">
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">📸</div>
-        <span>Tambahkan Foto Kelas</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Foto Bersama Kelas 5 Ibnu Khaldun 2</span></div>
-    </div>
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">🎨</div>
-        <span>Kegiatan Seni</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Pelajaran Seni Budaya</span></div>
-    </div>
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">⚽</div>
-        <span>Olahraga & Ekskul</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Kegiatan Olahraga</span></div>
-    </div>
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">📖</div>
-        <span>Belajar Bareng</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Study Session</span></div>
-    </div>
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">🌙</div>
-        <span>Kegiatan Islami</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Kegiatan Keagamaan</span></div>
-    </div>
-    <div class="galeri-item">
-      <div class="galeri-placeholder">
-        <div class="galeri-icon">🏆</div>
-        <span>Prestasi & Lomba</span>
-      </div>
-      <div class="galeri-overlay"><span class="galeri-caption">Penghargaan & Prestasi</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PENGUMUMAN + JADWAL -->
-<section class="pengumuman-section" id="pengumuman">
-  <div class="pengumuman-layout">
-    <div>
-      <div class="reveal">
-        <span class="section-eyebrow">Info Kelas</span>
-        <h2 class="section-title">Pengumuman</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="pengumuman-list reveal" id="pengumumanList">
-        <div class="pengumuman-item">
-          <div class="peng-date">
-            <span class="peng-day">13</span>
-            <span class="peng-month">Mar</span>
-          </div>
-          <div class="peng-content">
-            <span class="peng-tag tag-penting">Penting</span>
-            <p class="peng-title">Website Kelas 5 Ibnu Khaldun 2 Resmi Diluncurkan! 🎉</p>
-            <p class="peng-desc">Kelas Ibnu Khaldun 2 sekarang punya website resmi. Bookmark dan share ke orang tua!</p>
-          </div>
-        </div>
-        <div class="pengumuman-item">
-          <div class="peng-date">
-            <span class="peng-day">10</span>
-            <span class="peng-month">Mar</span>
-          </div>
-          <div class="peng-content">
-            <span class="peng-tag tag-kegiatan">Kegiatan</span>
-            <p class="peng-title">Persiapan UTS Semester Genap</p>
-            <p class="peng-desc">UTS akan dilaksanakan minggu depan. Belajar lebih semangat ya teman-teman!</p>
-          </div>
-        </div>
-        <div class="pengumuman-item">
-          <div class="peng-date">
-            <span class="peng-day">05</span>
-            <span class="peng-month">Mar</span>
-          </div>
-          <div class="peng-content">
-            <span class="peng-tag tag-info">Info</span>
-            <p class="peng-title">Jadwal Sholat Dhuha Bergilir</p>
-            <p class="peng-desc">Jadwal imam sholat dhuha bergilir sudah dibagikan. Cek grup WhatsApp kelas.</p>
-          </div>
-        </div>
-        <div class="pengumuman-item">
-          <div class="peng-date">
-            <span class="peng-day">01</span>
-            <span class="peng-month">Mar</span>
-          </div>
-          <div class="peng-content">
-            <span class="peng-tag tag-penting">Penting</span>
-            <p class="peng-title">Pengumpulan Tugas Prakarya</p>
-            <p class="peng-desc">Deadline pengumpulan tugas prakarya minggu ini. Jangan sampai telat!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- JADWAL -->
-    <div id="jadwal">
-      <div class="jadwal-card reveal">
-        <div class="jadwal-title">📅 Jadwal Pelajaran</div>
-
-        <div class="jadwal-days" id="jadwalDays"></div>
-
-        <div class="jadwal-list" id="jadwalList"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">IBNU KHALDUN 2</div>
-  <div class="footer-sub">Kelas 5 · SD Islam Nurul Hasanah</div>
-  <div class="footer-arabic">رَبِّ زِدْنِي عِلْمًا</div>
-  <div class="footer-divider"></div>
-  <div class="footer-bottom">
-    Bagian dari keluarga besar · 
-    <a href="https://nurulhasana.netlify.app" target="_blank" class="footer-school-link">nurulhasana.netlify.app</a>
-  </div>
-</footer>
-
-<!-- FLOATING SCHOOL BUTTON -->
-<a href="https://nurulhasana.netlify.app" target="_blank" class="school-float">
-  <div class="school-float-icon">🏫</div>
-  Web Sekolah
-</a>
-
 <script>
-// DATA ANGGOTA — ganti sesuai kelas beneran
-const anggota = [
-  { nama: "Muhammad Naufal Zafran", role: "Ketua Kelas", isKetua: true },
-  { nama: "Rhady Muhammad Khidir", role: "Wakil Ketua", isKetua: false },
-  { nama: "Hafidz Rizki Irana", role: "Sekretaris", isKetua: false },
-  { nama: "Abdillah Al Jaffan", role: "Keamanan", isKetua: false },
-  { nama: "Hamam Ali Razzak", role: "Kebersihan", isKetua: false },
-  { nama: "Siswa 6", role: "Anggota", isKetua: false },
-  { nama: "Siswa 7", role: "Anggota", isKetua: false },
-  { nama: "Siswa 8", role: "Anggota", isKetua: false },
-  { nama: "Siswa 9", role: "Anggota", isKetua: false },
-  { nama: "Siswa 10", role: "Anggota", isKetua: false },
-  { nama: "Siswa 11", role: "Anggota", isKetua: false },
-  { nama: "Siswa 12", role: "Anggota", isKetua: false },
-  { nama: "Siswa 13", role: "Anggota", isKetua: false },
-  { nama: "Siswa 14", role: "Anggota", isKetua: false },
-  { nama: "Siswa 15", role: "Anggota", isKetua: false },
-  { nama: "Siswa 16", role: "Anggota", isKetua: false },
-  { nama: "Siswa 17", role: "Anggota", isKetua: false },
-  { nama: "Siswa 18", role: "Anggota", isKetua: false },
-  { nama: "Siswa 19", role: "Anggota", isKetua: false },
-  { nama: "Siswa 20", role: "Anggota", isKetua: false },
-  { nama: "Siswa 21", role: "Anggota", isKetua: false },
-];
+// ============================================================
+// TINY WORLD ENGINE
+// ============================================================
 
-function getInitials(nama) {
-  return nama.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+ctx.imageSmoothingEnabled = false;
+
+// Responsive sizing
+const TILE = 16;
+let COLS, ROWS, W, H;
+
+function resize() {
+  const maxW = Math.min(window.innerWidth - 4, 640);
+  const maxH = Math.min(window.innerHeight - 4, 480);
+  COLS = Math.floor(maxW / TILE);
+  ROWS = Math.floor(maxH / TILE);
+  W = COLS * TILE;
+  H = ROWS * TILE;
+  canvas.width = W;
+  canvas.height = H;
+  ctx.imageSmoothingEnabled = false;
 }
+resize();
 
-const grid = document.getElementById('anggotaGrid');
-anggota.forEach((s, i) => {
-  const card = document.createElement('div');
-  card.className = 'anggota-card';
-  card.style.animationDelay = (i * 0.05) + 's';
-  card.innerHTML = `
-    <div class="anggota-avatar">${getInitials(s.nama)}</div>
-    <div class="anggota-nama">${s.nama}</div>
-    <div class="anggota-role ${s.isKetua ? 'ketua' : ''}">${s.role}</div>
-  `;
-  grid.appendChild(card);
-});
+// World size (larger than view = scrollable)
+const WORLD_COLS = 60;
+const WORLD_ROWS = 40;
 
-// Add card
-const addCard = document.createElement('div');
-addCard.className = 'anggota-card add-card';
-addCard.innerHTML = `<span class="plus">+</span><span>Tambah Anggota</span>`;
-grid.appendChild(addCard);
-
-// JADWAL DATA
-const jadwal = {
-  'Senin': [
-    { mapel: 'Upacara', jam: '07.00' },
-    { mapel: 'Matematika', jam: '08.00' },
-    { mapel: 'Bahasa Indonesia', jam: '09.00' },
-    { mapel: 'Istirahat', jam: '10.00' },
-    { mapel: 'IPA', jam: '10.20' },
-    { mapel: 'Agama Islam', jam: '11.20' },
-  ],
-  'Selasa': [
-    { mapel: 'Bahasa Arab', jam: '07.00' },
-    { mapel: 'IPS', jam: '08.00' },
-    { mapel: 'PKn', jam: '09.00' },
-    { mapel: 'Istirahat', jam: '10.00' },
-    { mapel: 'Matematika', jam: '10.20' },
-    { mapel: 'SBdP', jam: '11.20' },
-  ],
-  'Rabu': [
-    { mapel: 'Tahfidz Quran', jam: '07.00' },
-    { mapel: 'Bahasa Inggris', jam: '08.00' },
-    { mapel: 'IPA', jam: '09.00' },
-    { mapel: 'Istirahat', jam: '10.00' },
-    { mapel: 'Bahasa Indonesia', jam: '10.20' },
-    { mapel: 'PJOK', jam: '11.20' },
-  ],
-  'Kamis': [
-    { mapel: 'Agama Islam', jam: '07.00' },
-    { mapel: 'Matematika', jam: '08.00' },
-    { mapel: 'Bahasa Inggris', jam: '09.00' },
-    { mapel: 'Istirahat', jam: '10.00' },
-    { mapel: 'IPS', jam: '10.20' },
-    { mapel: 'Prakarya', jam: '11.20' },
-  ],
-  "Jum'at": [
-    { mapel: 'Tahsin', jam: '07.00' },
-    { mapel: 'Bahasa Indonesia', jam: '08.00' },
-    { mapel: 'Matematika', jam: '09.00' },
-    { mapel: 'Sholat Jumat / Keputrian', jam: '11.30' },
-  ],
+// Tile types
+const T = {
+  GRASS: 0, WATER: 1, SAND: 2, DIRT: 3, STONE_PATH: 4,
+  TREE: 10, TREE2: 11, FLOWER: 12, FLOWER2: 13, FLOWER3: 14,
+  ROCK: 15, BUSH: 16, MUSHROOM: 17,
+  HOUSE: 20, HOUSE2: 21, HOUSE3: 22,
+  BRIDGE: 25,
+  CHEST: 30,
+  SIGN: 31,
 };
 
-const days = Object.keys(jadwal);
-const daysContainer = document.getElementById('jadwalDays');
-const listContainer = document.getElementById('jadwalList');
+// World grid
+let world = [];
+let objects = []; // {x,y,type,anim}
 
-let activeDay = 'Senin';
+// Camera
+let cam = { x: 0, y: 0 };
 
-// Set active day based on current day
-const todayIdx = new Date().getDay(); // 0=Sun,1=Mon...5=Fri
-const dayMap = {1:'Senin',2:'Selasa',3:'Rabu',4:'Kamis',5:"Jum'at"};
-if (dayMap[todayIdx]) activeDay = dayMap[todayIdx];
+// Player
+let player = {
+  x: 15 * TILE, y: 10 * TILE,
+  vx: 0, vy: 0,
+  dir: 2, // 0=up,1=left,2=down,3=right
+  frame: 0,
+  frameTimer: 0,
+  moving: false,
+  name: '🧑',
+};
 
-function renderJadwal(day) {
-  listContainer.innerHTML = '';
-  jadwal[day].forEach((item, i) => {
-    const row = document.createElement('div');
-    row.className = 'jadwal-row';
-    row.innerHTML = `
-      <div class="jadwal-num">${i+1}</div>
-      <div class="jadwal-mapel">${item.mapel}</div>
-      <div class="jadwal-jam">${item.jam}</div>
-    `;
-    listContainer.appendChild(row);
+// Time
+let time = 0; // 0-1 = full day
+let timeSpeed = 0.0002;
+
+// Input
+const keys = {};
+const touches = {};
+let currentTool = 'walk';
+
+// Particles
+let particles = [];
+
+// NPC list
+let npcs = [];
+
+// Messages
+let msgTimer = 0;
+
+// ============================================================
+// WORLD GEN
+// ============================================================
+function generateWorld() {
+  world = Array.from({length: WORLD_ROWS}, () => Array(WORLD_COLS).fill(T.GRASS));
+  objects = [];
+
+  // Rivers
+  let rx = Math.floor(WORLD_COLS * 0.35);
+  for (let r = 0; r < WORLD_ROWS; r++) {
+    world[r][rx] = T.WATER;
+    world[r][rx+1] = T.WATER;
+    if (Math.random() < 0.3) rx += (Math.random()<0.5?1:-1);
+    rx = Math.max(2, Math.min(WORLD_COLS-4, rx));
+  }
+
+  // Sand near water
+  for (let r = 0; r < WORLD_ROWS; r++) {
+    for (let c = 0; c < WORLD_COLS; c++) {
+      if (world[r][c] === T.WATER) {
+        [[0,1],[0,-1],[1,0],[-1,0]].forEach(([dr,dc]) => {
+          const nr=r+dr, nc=c+dc;
+          if (nr>=0&&nr<WORLD_ROWS&&nc>=0&&nc<WORLD_COLS&&world[nr][nc]===T.GRASS) {
+            world[nr][nc] = T.SAND;
+          }
+        });
+      }
+    }
+  }
+
+  // Paths (dirt)
+  // Horizontal main road
+  for (let c = 0; c < WORLD_COLS; c++) {
+    if (world[12][c] !== T.WATER && world[12][c] !== T.SAND)
+      world[12][c] = T.STONE_PATH;
+  }
+  // Vertical path
+  for (let r = 0; r < WORLD_ROWS; r++) {
+    if (world[r][8] !== T.WATER && world[r][8] !== T.SAND)
+      world[r][8] = T.STONE_PATH;
+  }
+
+  // Trees
+  for (let i = 0; i < 120; i++) {
+    const c = Math.floor(Math.random() * WORLD_COLS);
+    const r = Math.floor(Math.random() * WORLD_ROWS);
+    if (world[r][c] === T.GRASS && !isNearPath(r, c)) {
+      const type = Math.random()<0.6 ? T.TREE : T.TREE2;
+      setObj(c, r, type);
+    }
+  }
+
+  // Flowers scattered
+  for (let i = 0; i < 80; i++) {
+    const c = Math.floor(Math.random() * WORLD_COLS);
+    const r = Math.floor(Math.random() * WORLD_ROWS);
+    if (world[r][c] === T.GRASS && !getObj(c,r)) {
+      const f = [T.FLOWER, T.FLOWER2, T.FLOWER3][Math.floor(Math.random()*3)];
+      setObj(c, r, f);
+    }
+  }
+
+  // Rocks
+  for (let i = 0; i < 25; i++) {
+    const c = Math.floor(Math.random() * WORLD_COLS);
+    const r = Math.floor(Math.random() * WORLD_ROWS);
+    if (world[r][c] === T.GRASS && !getObj(c,r)) {
+      setObj(c, r, T.ROCK);
+    }
+  }
+
+  // Houses cluster (village)
+  const vr = 10, vc = 10;
+  [[0,0,T.HOUSE],[0,3,T.HOUSE2],[3,0,T.HOUSE3],[3,3,T.HOUSE]].forEach(([dr,dc,type]) => {
+    const tr = vr+dr, tc = vc+dc;
+    if (world[tr][tc]===T.GRASS||world[tr][tc]===T.STONE_PATH) {
+      world[tr][tc] = T.GRASS;
+      setObj(tc, tr, type);
+    }
+  });
+
+  // Chest + sign
+  setObj(5, 8, T.CHEST);
+  setObj(7, 12, T.SIGN);
+
+  // Mushrooms
+  for (let i = 0; i < 15; i++) {
+    const c = Math.floor(Math.random() * WORLD_COLS);
+    const r = Math.floor(Math.random() * WORLD_ROWS);
+    if (world[r][c] === T.GRASS && !getObj(c,r)) setObj(c, r, T.MUSHROOM);
+  }
+
+  // Bush
+  for (let i = 0; i < 30; i++) {
+    const c = Math.floor(Math.random() * WORLD_COLS);
+    const r = Math.floor(Math.random() * WORLD_ROWS);
+    if (world[r][c] === T.GRASS && !getObj(c,r)) setObj(c, r, T.BUSH);
+  }
+
+  // NPCs
+  npcs = [
+    { x: 11*TILE, y: 11*TILE, name:'Petani 👨‍🌾', dir:2, frame:0, ft:0, moving:false, vx:0, vy:0, msg:'Selamat datang di Tiny World!', wanderTimer:0 },
+    { x: 13*TILE, y: 12*TILE, name:'Penyihir 🧙', dir:2, frame:0, ft:0, moving:false, vx:0, vy:0, msg:'Hati-hati di hutan timur...', wanderTimer:0 },
+    { x: 6*TILE, y: 10*TILE, name:'Anak 👧', dir:0, frame:0, ft:0, moving:false, vx:0, vy:0, msg:'Aku suka bunga-bunga di sini!', wanderTimer:0 },
+  ];
+}
+
+function isNearPath(r, c) {
+  for (let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
+    const nr=r+dr,nc=c+dc;
+    if(nr>=0&&nr<WORLD_ROWS&&nc>=0&&nc<WORLD_COLS)
+      if(world[nr][nc]===T.STONE_PATH) return true;
+  }
+  return false;
+}
+
+function getObj(x, y) {
+  return objects.find(o => o.x===x && o.y===y);
+}
+function setObj(x, y, type) {
+  const existing = getObj(x, y);
+  if (existing) existing.type = type;
+  else objects.push({x, y, type, anim:Math.random()*Math.PI*2});
+}
+function removeObj(x, y) {
+  objects = objects.filter(o => !(o.x===x && o.y===y));
+}
+
+// ============================================================
+// COLORS / TILE RENDER
+// ============================================================
+const TILE_COLORS = {
+  [T.GRASS]:    ['#5a9e47','#6ab050','#4e8c3d'],
+  [T.WATER]:    ['#3a8fbf','#4aa0d0','#2e7aab'],
+  [T.SAND]:     ['#d4b483','#e0c494','#c8a870'],
+  [T.DIRT]:     ['#8b6340','#9a7050','#7a5530'],
+  [T.STONE_PATH]:['#9a9a9a','#b0b0b0','#888888'],
+};
+
+function drawTile(c, r, sx, sy) {
+  const t = world[r] ? world[r][c] : T.GRASS;
+  const colors = TILE_COLORS[t] || TILE_COLORS[T.GRASS];
+  ctx.fillStyle = colors[0];
+  ctx.fillRect(sx, sy, TILE, TILE);
+
+  // Detail
+  ctx.fillStyle = colors[1];
+  if (t === T.GRASS) {
+    // Grass blades
+    const seed = c*31+r*17;
+    [[2,12],[5,9],[9,13],[12,10],[14,6]].forEach(([gx,gy],i)=>{
+      if ((seed+i)%3!==0) {
+        ctx.fillRect(sx+gx, sy+gy, 1, 3);
+      }
+    });
+  } else if (t === T.WATER) {
+    // Animated waves
+    const wave = Math.sin(time*20 + c*0.8 + r*0.5);
+    ctx.fillStyle = wave > 0 ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.08)';
+    ctx.fillRect(sx+2, sy+6, 12, 2);
+    ctx.fillRect(sx+4, sy+11, 8, 2);
+  } else if (t === T.SAND) {
+    ctx.fillStyle = colors[2];
+    const seed2 = c*13+r*23;
+    for (let i=0;i<3;i++) ctx.fillRect(sx+((seed2*i*7)%12)+2, sy+((seed2*i*11)%12)+2, 1,1);
+  } else if (t === T.STONE_PATH) {
+    ctx.fillStyle = colors[2];
+    ctx.fillRect(sx+1,sy+1,6,6);
+    ctx.fillRect(sx+9,sy+9,6,6);
+    ctx.fillRect(sx+1,sy+9,4,5);
+    ctx.fillRect(sx+9,sy+1,5,4);
+  }
+}
+
+// Object sprites (pixel art via canvas rects)
+function drawObject(obj, sx, sy) {
+  const bounce = Math.sin(obj.anim + time*2) * 0.5;
+  const by = Math.round(bounce);
+
+  ctx.save();
+  switch(obj.type) {
+    case T.TREE: drawTree(sx, sy+by, '#2d7a1f', '#1a5e10'); break;
+    case T.TREE2: drawTree(sx, sy+by, '#3a8f2a', '#228b22', true); break;
+    case T.FLOWER: drawFlower(sx, sy, '#ff6b9d', '#ffecf1'); break;
+    case T.FLOWER2: drawFlower(sx, sy, '#ffd93d', '#fff3cc'); break;
+    case T.FLOWER3: drawFlower(sx, sy, '#c77dff', '#f0e6ff'); break;
+    case T.ROCK: drawRock(sx, sy); break;
+    case T.BUSH: drawBush(sx, sy+by); break;
+    case T.MUSHROOM: drawMushroom(sx, sy+by); break;
+    case T.HOUSE: drawHouse(sx, sy, '#e8624a', '#c0392b'); break;
+    case T.HOUSE2: drawHouse(sx, sy, '#5ba3e8', '#2980b9'); break;
+    case T.HOUSE3: drawHouse(sx, sy, '#a86fd4', '#7d3fb5'); break;
+    case T.CHEST: drawChest(sx, sy+by); break;
+    case T.SIGN: drawSign(sx, sy); break;
+  }
+  ctx.restore();
+}
+
+function drawTree(sx, sy, c1, c2, round=false) {
+  // Trunk
+  ctx.fillStyle = '#8B6040';
+  ctx.fillRect(sx+6, sy+10, 4, 6);
+  // Crown
+  ctx.fillStyle = c1;
+  if (round) {
+    ctx.fillRect(sx+2, sy+4, 12, 8);
+    ctx.fillRect(sx+4, sy+2, 8, 2);
+    ctx.fillRect(sx+4, sy+12, 8, 2);
+    ctx.fillRect(sx+1, sy+6, 14, 6);
+  } else {
+    // Pine
+    ctx.fillRect(sx+6, sy+1, 4, 2);
+    ctx.fillRect(sx+4, sy+3, 8, 2);
+    ctx.fillRect(sx+2, sy+5, 12, 2);
+    ctx.fillRect(sx+1, sy+7, 14, 4);
+  }
+  ctx.fillStyle = c2;
+  ctx.fillRect(sx+3, sy+3, 2, 2);
+  ctx.fillRect(sx+10, sy+5, 2, 2);
+}
+
+function drawFlower(sx, sy, petal, center) {
+  // Stem
+  ctx.fillStyle = '#5a9e47';
+  ctx.fillRect(sx+7, sy+10, 2, 5);
+  // Petals
+  ctx.fillStyle = petal;
+  ctx.fillRect(sx+5, sy+7, 2, 2);
+  ctx.fillRect(sx+9, sy+7, 2, 2);
+  ctx.fillRect(sx+7, sy+5, 2, 2);
+  ctx.fillRect(sx+7, sy+9, 2, 2);
+  // Center
+  ctx.fillStyle = center;
+  ctx.fillRect(sx+7, sy+7, 2, 2);
+}
+
+function drawRock(sx, sy) {
+  ctx.fillStyle = '#888';
+  ctx.fillRect(sx+3, sy+8, 10, 6);
+  ctx.fillRect(sx+2, sy+9, 12, 4);
+  ctx.fillStyle = '#aaa';
+  ctx.fillRect(sx+4, sy+8, 5, 2);
+  ctx.fillStyle = '#666';
+  ctx.fillRect(sx+3, sy+12, 10, 2);
+}
+
+function drawBush(sx, sy) {
+  ctx.fillStyle = '#3a7d2c';
+  ctx.fillRect(sx+1, sy+8, 14, 6);
+  ctx.fillRect(sx+3, sy+6, 10, 4);
+  ctx.fillStyle = '#4a9e38';
+  ctx.fillRect(sx+2, sy+7, 4, 3);
+  ctx.fillRect(sx+9, sy+6, 4, 3);
+  // Berries
+  ctx.fillStyle = '#e74c3c';
+  ctx.fillRect(sx+5, sy+9, 2, 2);
+  ctx.fillRect(sx+10, sy+8, 2, 2);
+}
+
+function drawMushroom(sx, sy) {
+  // Stem
+  ctx.fillStyle = '#f5e6d0';
+  ctx.fillRect(sx+5, sy+10, 6, 5);
+  // Cap
+  ctx.fillStyle = '#e74c3c';
+  ctx.fillRect(sx+2, sy+6, 12, 5);
+  ctx.fillRect(sx+4, sy+4, 8, 3);
+  ctx.fillRect(sx+6, sy+3, 4, 2);
+  // Dots
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(sx+4, sy+7, 2, 2);
+  ctx.fillRect(sx+9, sy+6, 2, 2);
+  ctx.fillRect(sx+7, sy+9, 2, 2);
+}
+
+function drawHouse(sx, sy, roofCol, roofDark) {
+  // Wall
+  ctx.fillStyle = '#f5deb3';
+  ctx.fillRect(sx+1, sy+7, 14, 9);
+  // Door
+  ctx.fillStyle = '#8B6040';
+  ctx.fillRect(sx+6, sy+11, 4, 5);
+  // Window
+  ctx.fillStyle = '#87CEEB';
+  ctx.fillRect(sx+2, sy+9, 3, 3);
+  ctx.fillRect(sx+11, sy+9, 3, 3);
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillRect(sx+2, sy+9, 1, 1);
+  ctx.fillRect(sx+11, sy+9, 1, 1);
+  // Roof
+  ctx.fillStyle = roofCol;
+  for (let i=0;i<8;i++) {
+    ctx.fillRect(sx+i, sy+7-i, 16-i*2, 2);
+  }
+  ctx.fillStyle = roofDark;
+  ctx.fillRect(sx+1, sy+6, 14, 1);
+  ctx.fillRect(sx+7, sy+1, 2, 2);
+}
+
+function drawChest(sx, sy) {
+  ctx.fillStyle = '#8B6040';
+  ctx.fillRect(sx+2, sy+8, 12, 7);
+  ctx.fillStyle = '#c8a850';
+  ctx.fillRect(sx+2, sy+7, 12, 3);
+  ctx.fillStyle = '#ffd700';
+  ctx.fillRect(sx+6, sy+9, 4, 3);
+  ctx.fillRect(sx+7, sy+10, 2, 2);
+  ctx.fillStyle = '#a07030';
+  ctx.fillRect(sx+2, sy+10, 12, 1);
+}
+
+function drawSign(sx, sy) {
+  ctx.fillStyle = '#8B6040';
+  ctx.fillRect(sx+7, sy+10, 2, 5);
+  ctx.fillStyle = '#c8a870';
+  ctx.fillRect(sx+2, sy+5, 12, 7);
+  ctx.fillStyle = '#8B6040';
+  ctx.fillRect(sx+3, sy+6, 10, 5);
+  ctx.fillStyle = '#f5deb3';
+  ctx.fillRect(sx+4, sy+7, 2, 1);
+  ctx.fillRect(sx+7, sy+7, 5, 1);
+  ctx.fillRect(sx+4, sy+9, 8, 1);
+}
+
+// ============================================================
+// CHARACTER RENDER (cute pixel)
+// ============================================================
+function drawCharacter(sx, sy, dir, frame, name, isPlayer=false) {
+  const bob = frame % 2 === 0 ? 0 : -1;
+
+  // Shadow
+  ctx.fillStyle = 'rgba(0,0,0,0.2)';
+  ctx.fillRect(sx+3, sy+13, 10, 3);
+
+  // Body
+  ctx.fillStyle = isPlayer ? '#5b8dd9' : '#e8a44a';
+  ctx.fillRect(sx+4, sy+7+bob, 8, 6);
+
+  // Legs
+  if (frame % 4 < 2) {
+    ctx.fillStyle = isPlayer ? '#3a5ea8' : '#c07830';
+    ctx.fillRect(sx+4, sy+13+bob, 3, 3);
+    ctx.fillRect(sx+9, sy+13+bob, 3, 3);
+  } else {
+    ctx.fillStyle = isPlayer ? '#3a5ea8' : '#c07830';
+    ctx.fillRect(sx+4, sy+14+bob, 3, 2);
+    ctx.fillRect(sx+9, sy+12+bob, 3, 2);
+  }
+
+  // Shoes
+  ctx.fillStyle = '#4a3020';
+  ctx.fillRect(sx+3, sy+15+bob, 4, 2);
+  ctx.fillRect(sx+9, sy+15+bob, 4, 2);
+
+  // Arms
+  ctx.fillStyle = isPlayer ? '#f0c8a0' : '#f5c8a0';
+  if (frame % 4 < 2) {
+    ctx.fillRect(sx+2, sy+8+bob, 2, 4);
+    ctx.fillRect(sx+12, sy+8+bob, 2, 4);
+  } else {
+    ctx.fillRect(sx+2, sy+9+bob, 2, 4);
+    ctx.fillRect(sx+12, sy+7+bob, 2, 4);
+  }
+
+  // Head
+  ctx.fillStyle = '#f0c8a0';
+  ctx.fillRect(sx+3, sy+1+bob, 10, 8);
+
+  // Hair
+  const hairColor = isPlayer ? '#3a2010' : '#2a1a08';
+  ctx.fillStyle = hairColor;
+  ctx.fillRect(sx+3, sy+1+bob, 10, 3);
+  ctx.fillRect(sx+3, sy+1+bob, 2, 5);
+  if (!isPlayer) ctx.fillRect(sx+11, sy+1+bob, 2, 5);
+
+  // Eyes based on direction
+  ctx.fillStyle = '#1a1a2e';
+  if (dir === 2) { // down
+    ctx.fillRect(sx+5, sy+6+bob, 2, 2);
+    ctx.fillRect(sx+9, sy+6+bob, 2, 2);
+    // Mouth
+    ctx.fillStyle = '#c87060';
+    ctx.fillRect(sx+6, sy+8+bob, 4, 1);
+  } else if (dir === 0) { // up
+    ctx.fillRect(sx+5, sy+5+bob, 2, 1);
+    ctx.fillRect(sx+9, sy+5+bob, 2, 1);
+  } else if (dir === 3) { // right
+    ctx.fillRect(sx+9, sy+6+bob, 2, 2);
+    ctx.fillStyle = '#c87060';
+    ctx.fillRect(sx+9, sy+8+bob, 3, 1);
+  } else { // left
+    ctx.fillRect(sx+5, sy+6+bob, 2, 2);
+    ctx.fillStyle = '#c87060';
+    ctx.fillRect(sx+4, sy+8+bob, 3, 1);
+  }
+
+  // Eye shine
+  ctx.fillStyle = '#fff';
+  if (dir !== 0) {
+    ctx.fillRect(sx+5, sy+6+bob, 1, 1);
+    ctx.fillRect(sx+9, sy+6+bob, 1, 1);
+  }
+
+  // Hat (player only)
+  if (isPlayer) {
+    ctx.fillStyle = '#c0392b';
+    ctx.fillRect(sx+3, sy+0+bob, 10, 2);
+    ctx.fillRect(sx+5, sy-2+bob, 6, 2);
+    ctx.fillStyle = '#e74c3c';
+    ctx.fillRect(sx+5, sy-2+bob, 2, 1);
+  }
+
+  // Name tag (only for NPCs nearby)
+  if (!isPlayer && name) {
+    ctx.font = '5px "Press Start 2P"';
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    const tw = ctx.measureText(name.replace(/[^\x00-\x7F]/g,'??')).width + 4;
+    ctx.fillRect(sx+8-tw/2, sy-10+bob, tw, 8);
+    ctx.fillStyle = '#fff';
+    ctx.fillText(name.replace(/[^\x00-\x7F]/g,''), sx+8-tw/2+2, sy-4+bob);
+  }
+}
+
+// ============================================================
+// PARTICLES
+// ============================================================
+function spawnParticle(x, y, color, emoji='') {
+  for (let i=0; i<5; i++) {
+    particles.push({
+      x, y,
+      vx: (Math.random()-0.5)*2,
+      vy: -Math.random()*2-1,
+      life: 1,
+      color,
+      emoji,
+      size: 3+Math.random()*3
+    });
+  }
+}
+
+function updateParticles(dt) {
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.05;
+    p.life -= 0.02;
   });
 }
 
-days.forEach(day => {
-  const btn = document.createElement('button');
-  btn.className = 'day-btn' + (day === activeDay ? ' active' : '');
-  btn.textContent = day;
-  btn.onclick = () => {
-    activeDay = day;
-    document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderJadwal(day);
-  };
-  daysContainer.appendChild(btn);
+function drawParticles() {
+  particles.forEach(p => {
+    ctx.globalAlpha = p.life;
+    ctx.fillStyle = p.color;
+    ctx.fillRect(Math.round(p.x), Math.round(p.y), p.size, p.size);
+  });
+  ctx.globalAlpha = 1;
+}
+
+// ============================================================
+// TOOL LOGIC
+// ============================================================
+function setTool(tool) {
+  currentTool = tool;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tb-'+tool)?.classList.add('active');
+  document.getElementById('hud-tool').textContent = {
+    walk:'Jalan', tree:'Tanam Pohon', house:'Bangun Rumah',
+    flower:'Tanam Bunga', water:'Buat Kolam',
+    rock:'Taruh Batu', erase:'Hapus'
+  }[tool] || tool;
+}
+
+function useTool(wx, wy) {
+  if (currentTool === 'walk') return;
+
+  const tc = Math.floor(wx / TILE);
+  const tr = Math.floor(wy / TILE);
+  if (tc < 0 || tc >= WORLD_COLS || tr < 0 || tr >= WORLD_ROWS) return;
+
+  if (currentTool === 'water') {
+    world[tr][tc] = T.WATER;
+    removeObj(tc, tr);
+    spawnParticle(wx-cam.x, wy-cam.y, '#3a8fbf');
+    showMsg('💧 Kolam dibuat!');
+  } else if (currentTool === 'erase') {
+    world[tr][tc] = T.GRASS;
+    removeObj(tc, tr);
+    spawnParticle(wx-cam.x, wy-cam.y, '#5a9e47');
+    showMsg('🗑️ Dihapus!');
+  } else {
+    if (world[tr][tc] === T.WATER) { showMsg('❌ Tidak bisa di air!'); return; }
+    const typeMap = {
+      tree: T.TREE, house: T.HOUSE, flower: T.FLOWER, rock: T.ROCK
+    };
+    const type = typeMap[currentTool];
+    if (type !== undefined) {
+      removeObj(tc, tr);
+      setObj(tc, tr, type);
+      spawnParticle(wx-cam.x, wy-cam.y, '#5a9e47');
+      const msgs = {
+        tree:'🌲 Pohon ditanam!', house:'🏠 Rumah dibangun!',
+        flower:'🌸 Bunga ditanam!', rock:'🪨 Batu diletakkan!'
+      };
+      showMsg(msgs[currentTool]);
+    }
+  }
+}
+
+// ============================================================
+// INTERACTION
+// ============================================================
+function interact() {
+  const px = Math.round(player.x/TILE);
+  const py = Math.round(player.y/TILE);
+
+  // Check NPC
+  for (const npc of npcs) {
+    const nx = Math.round(npc.x/TILE);
+    const ny = Math.round(npc.y/TILE);
+    const d = Math.abs(nx-px)+Math.abs(ny-py);
+    if (d <= 2) {
+      showMsg(npc.msg);
+      spawnParticle(npc.x-cam.x+8, npc.y-cam.y, '#ffd700');
+      return;
+    }
+  }
+
+  // Check objects
+  const dirs = [[0,0],[0,-1],[0,1],[-1,0],[1,0]];
+  for (const [dc,dr] of dirs) {
+    const obj = getObj(px+dc, py+dr);
+    if (obj) {
+      if (obj.type === T.CHEST) {
+        showMsg('📦 Kamu mendapat 100 Koin! ✨');
+        spawnParticle((px+dc)*TILE-cam.x+8, (py+dr)*TILE-cam.y, '#ffd700');
+        removeObj(px+dc, py+dr);
+        return;
+      }
+      if (obj.type === T.SIGN) {
+        showMsg('📜 "Desa Tiny World — Penduduk: Imut semua!"');
+        return;
+      }
+    }
+  }
+
+  showMsg('✨ Tidak ada yang spesial di sini...');
+}
+
+// ============================================================
+// MOVEMENT
+// ============================================================
+function isBlocked(wx, wy) {
+  const col = Math.floor(wx / TILE);
+  const row = Math.floor(wy / TILE);
+  if (col < 0 || col >= WORLD_COLS || row < 0 || row >= WORLD_ROWS) return true;
+  if (world[row][col] === T.WATER) return true;
+  const obj = getObj(col, row);
+  if (obj && [T.TREE,T.TREE2,T.ROCK,T.HOUSE,T.HOUSE2,T.HOUSE3].includes(obj.type)) return true;
+  return false;
+}
+
+function movePlayer(dx, dy, dt) {
+  const spd = 60;
+  const nx = player.x + dx * spd * dt;
+  const ny = player.y + dy * spd * dt;
+
+  // Collision (check corners of 8x8 box centered)
+  const half = 5;
+  const cx = nx + 8, cy = ny + 12;
+
+  const canX = !isBlocked(cx-half, cy) && !isBlocked(cx+half, cy) &&
+               !isBlocked(cx-half, cy-half) && !isBlocked(cx+half, cy-half);
+  const canY = !isBlocked(cx-half, cy) && !isBlocked(cx+half, cy) &&
+               !isBlocked(cx, cy+half) && !isBlocked(cx, cy-half);
+
+  if (dx !== 0 && canX) player.x = Math.max(0, Math.min((WORLD_COLS-1)*TILE, nx));
+  if (dy !== 0 && canY) player.y = Math.max(0, Math.min((WORLD_ROWS-1)*TILE, ny));
+
+  if (dx > 0) player.dir = 3;
+  else if (dx < 0) player.dir = 1;
+  else if (dy < 0) player.dir = 0;
+  else if (dy > 0) player.dir = 2;
+
+  player.moving = dx !== 0 || dy !== 0;
+}
+
+// ============================================================
+// NPC AI (wander)
+// ============================================================
+function updateNPCs(dt) {
+  npcs.forEach(npc => {
+    npc.wanderTimer -= dt;
+    if (npc.wanderTimer <= 0) {
+      npc.wanderTimer = 1.5 + Math.random()*2;
+      if (Math.random() < 0.4) {
+        const dirs = [[1,0],[-1,0],[0,1],[0,-1],[0,0]];
+        const [dvx,dvy] = dirs[Math.floor(Math.random()*dirs.length)];
+        npc.vx = dvx * 25; npc.vy = dvy * 25;
+        if (dvx > 0) npc.dir = 3;
+        else if (dvx < 0) npc.dir = 1;
+        else if (dvy < 0) npc.dir = 0;
+        else npc.dir = 2;
+      } else {
+        npc.vx = 0; npc.vy = 0;
+      }
+    }
+
+    if (npc.vx !== 0 || npc.vy !== 0) {
+      const nx = npc.x + npc.vx * dt;
+      const ny = npc.y + npc.vy * dt;
+      if (!isBlocked(nx+8, ny+12) && nx>0 && nx<(WORLD_COLS-1)*TILE)
+        npc.x = nx;
+      if (!isBlocked(npc.x+8, ny+12) && ny>0 && ny<(WORLD_ROWS-1)*TILE)
+        npc.y = ny;
+      npc.moving = true;
+    } else {
+      npc.moving = false;
+    }
+
+    npc.ft += dt * 6;
+    if (npc.moving) npc.frame = Math.floor(npc.ft) % 4;
+    else { npc.frame = 0; npc.ft = 0; }
+  });
+}
+
+// ============================================================
+// DAY/NIGHT
+// ============================================================
+function updateTime(dt) {
+  time += timeSpeed * dt * 60;
+  if (time >= 1) time = 0;
+
+  let label, overlay;
+  if (time < 0.25) { label='🌅 Fajar'; overlay='rgba(255,150,50,0.08)'; }
+  else if (time < 0.45) { label='☀️ Pagi'; overlay='rgba(0,0,0,0)'; }
+  else if (time < 0.55) { label='🌤️ Siang'; overlay='rgba(255,240,200,0.05)'; }
+  else if (time < 0.7) { label='🌇 Sore'; overlay='rgba(255,100,30,0.1)'; }
+  else if (time < 0.8) { label='🌆 Petang'; overlay='rgba(50,0,100,0.2)'; }
+  else { label='🌙 Malam'; overlay='rgba(0,0,30,0.5)'; }
+
+  document.getElementById('hud-time').textContent = label;
+  document.getElementById('daynight').style.background = overlay;
+}
+
+// ============================================================
+// CAMERA
+// ============================================================
+function updateCamera() {
+  const tx = player.x - W/2 + 8;
+  const ty = player.y - H/2 + 8;
+  cam.x += (tx - cam.x) * 0.12;
+  cam.y += (ty - cam.y) * 0.12;
+  cam.x = Math.max(0, Math.min(WORLD_COLS*TILE - W, cam.x));
+  cam.y = Math.max(0, Math.min(WORLD_ROWS*TILE - H, cam.y));
+}
+
+// ============================================================
+// MESSAGE
+// ============================================================
+function showMsg(txt) {
+  const el = document.getElementById('msg-box');
+  el.textContent = txt;
+  el.classList.add('show');
+  clearTimeout(msgTimer);
+  msgTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ============================================================
+// MAIN LOOP
+// ============================================================
+let last = 0;
+function loop(ts) {
+  const dt = Math.min((ts - last) / 1000, 0.05);
+  last = ts;
+
+  // Input
+  let dx = 0, dy = 0;
+  if (keys['ArrowLeft']||keys['a']||keys['A']||touches.left) dx=-1;
+  if (keys['ArrowRight']||keys['d']||keys['D']||touches.right) dx=1;
+  if (keys['ArrowUp']||keys['w']||keys['W']||touches.up) dy=-1;
+  if (keys['ArrowDown']||keys['s']||keys['S']||touches.down) dy=1;
+
+  // Normalize diagonal
+  if (dx&&dy) { dx*=0.707; dy*=0.707; }
+
+  movePlayer(dx, dy, dt);
+
+  // Animate player
+  player.frameTimer += dt * 8;
+  if (player.moving) player.frame = Math.floor(player.frameTimer) % 4;
+  else { player.frame = 0; player.frameTimer = 0; }
+
+  updateCamera();
+  updateNPCs(dt);
+  updateTime(dt);
+  updateParticles(dt);
+
+  // Animate objects
+  objects.forEach(o => o.anim += dt * 0.8);
+
+  // Draw
+  ctx.clearRect(0,0,W,H);
+
+  // Tiles
+  const startC = Math.max(0, Math.floor(cam.x/TILE));
+  const endC = Math.min(WORLD_COLS, Math.ceil((cam.x+W)/TILE));
+  const startR = Math.max(0, Math.floor(cam.y/TILE));
+  const endR = Math.min(WORLD_ROWS, Math.ceil((cam.y+H)/TILE));
+
+  for (let r=startR; r<endR; r++) {
+    for (let c=startC; c<endC; c++) {
+      drawTile(c, r, Math.round(c*TILE-cam.x), Math.round(r*TILE-cam.y));
+    }
+  }
+
+  // Objects (sorted by y for depth)
+  const visObj = objects.filter(o =>
+    o.x >= startC-1 && o.x <= endC+1 && o.y >= startR-1 && o.y <= endR+1
+  );
+
+  // Sort all entities by y
+  const entities = [
+    ...visObj.map(o => ({ y: o.y, draw: () => drawObject(o, Math.round(o.x*TILE-cam.x), Math.round(o.y*TILE-cam.y)) })),
+    ...npcs.map(n => ({ y: n.y/TILE, draw: () => drawCharacter(Math.round(n.x-cam.x), Math.round(n.y-cam.y), n.dir, n.frame, n.name.split(' ')[0]) })),
+    { y: player.y/TILE+1, draw: () => drawCharacter(Math.round(player.x-cam.x), Math.round(player.y-cam.y), player.dir, player.frame, '', true) }
+  ];
+  entities.sort((a,b) => a.y - b.y);
+  entities.forEach(e => e.draw());
+
+  drawParticles();
+
+  requestAnimationFrame(loop);
+}
+
+// ============================================================
+// INPUT
+// ============================================================
+document.addEventListener('keydown', e => {
+  keys[e.key] = true;
+  if (e.key === 'e' || e.key === 'E' || e.key === ' ') { interact(); e.preventDefault(); }
+  if (e.key === 'ArrowUp'||e.key==='ArrowDown'||e.key==='ArrowLeft'||e.key==='ArrowRight') e.preventDefault();
+});
+document.addEventListener('keyup', e => keys[e.key] = false);
+
+// D-pad
+function dpad(id, prop) {
+  const btn = document.getElementById(id);
+  btn.addEventListener('touchstart', e => { e.preventDefault(); touches[prop]=true; });
+  btn.addEventListener('touchend', e => { e.preventDefault(); touches[prop]=false; });
+  btn.addEventListener('mousedown', () => touches[prop]=true);
+  btn.addEventListener('mouseup', () => touches[prop]=false);
+}
+dpad('btn-up','up'); dpad('btn-down','down');
+dpad('btn-left','left'); dpad('btn-right','right');
+document.getElementById('btn-act').addEventListener('click', e => { e.preventDefault(); interact(); });
+
+// Canvas click = use tool
+canvas.addEventListener('click', e => {
+  if (currentTool === 'walk') return;
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = W / rect.width;
+  const scaleY = H / rect.height;
+  const cx = (e.clientX - rect.left) * scaleX + cam.x;
+  const cy = (e.clientY - rect.top) * scaleY + cam.y;
+  useTool(cx, cy);
+});
+canvas.addEventListener('touchend', e => {
+  if (currentTool === 'walk') return;
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const touch = e.changedTouches[0];
+  const scaleX = W / rect.width;
+  const scaleY = H / rect.height;
+  const cx = (touch.clientX - rect.left) * scaleX + cam.x;
+  const cy = (touch.clientY - rect.top) * scaleY + cam.y;
+  useTool(cx, cy);
 });
 
-renderJadwal(activeDay);
+// ============================================================
+// PREVIEW (title screen)
+// ============================================================
+function drawPreview() {
+  const pc = document.getElementById('previewCanvas');
+  const pctx = pc.getContext('2d');
+  pctx.imageSmoothingEnabled = false;
+  pctx.fillStyle = '#5a9e47';
+  pctx.fillRect(0,0,64,64);
+  // Tiny ground tiles
+  pctx.fillStyle = '#6ab050';
+  for (let i=0;i<4;i++) for(let j=0;j<4;j++) if((i+j)%2===0) pctx.fillRect(i*16,j*16,16,16);
+  // Draw tiny char preview
+  drawCharOnCtx(pctx, 22, 20, 2, 0, true);
+}
 
-// SCROLL REVEAL
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
+function drawCharOnCtx(c, sx, sy, dir, frame, isPlayer) {
+  c.fillStyle = '#f0c8a0'; c.fillRect(sx+3,sy+1,10,8);
+  c.fillStyle = '#3a2010'; c.fillRect(sx+3,sy+1,10,3);
+  c.fillStyle = isPlayer ? '#5b8dd9' : '#e8a44a'; c.fillRect(sx+4,sy+7,8,6);
+  c.fillStyle = '#1a1a2e'; c.fillRect(sx+5,sy+6,2,2); c.fillRect(sx+9,sy+6,2,2);
+  if (isPlayer) { c.fillStyle='#c0392b'; c.fillRect(sx+3,sy+0,10,2); c.fillRect(sx+5,sy-2,6,2); }
+}
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ============================================================
+// START
+// ============================================================
+function startGame() {
+  document.getElementById('title-screen').style.display='none';
+  generateWorld();
+  player.x = 8*TILE; player.y = 12*TILE;
+  cam.x = player.x-W/2; cam.y = player.y-H/2;
+  requestAnimationFrame(ts => { last=ts; requestAnimationFrame(loop); });
+  setTimeout(() => showMsg('🌍 Selamat datang di Tiny World! [WASD/Arrow = gerak, E/Space = interaksi]'), 800);
+}
+
+drawPreview();
 </script>
-
 </body>
 </html>
